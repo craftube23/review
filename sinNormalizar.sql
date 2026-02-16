@@ -1,22 +1,32 @@
-CREATE DATABASE IF NOT EXISTS sistema_integral_social;
-USE sistema_integral_social;
-
-CREATE TABLE datos_sistema (
+-- Tabla temporal para la carga masiva de información externa
+CREATE TABLE IF NOT EXISTS fuente_datos_sociales (
     id INT AUTO_INCREMENT PRIMARY KEY,
-    categoria VARCHAR(100),
-    periodo INT,
-    genero VARCHAR(30),
-    edad INT,
-    tipo_identificacion VARCHAR(100),
-    personas_condicion_discapacidad VARCHAR(20),
-    tipo_discapacidad VARCHAR(100),
-    cabeza_familia VARCHAR(20),
-    orientacion_sexual_lgtbi VARCHAR(100),
-    experiencia_migratoria VARCHAR(20),
-    grupo_etnico VARCHAR(150),
-    nivel_educativo VARCHAR(150),
-    condicion_ocupacional VARCHAR(150),
-    barrio_vereda VARCHAR(150),
-    comuna_corregimiento VARCHAR(150),
-    zona VARCHAR(50)
+    
+    -- Información temporal y clasificación
+    anualidad INT,
+    clasificacion_cat VARCHAR(110),
+    
+    -- Datos demográficos básicos
+    sexo_biologico VARCHAR(35),
+    rango_edad INT,
+    doc_identidad_tipo VARCHAR(110),
+    
+    -- Condiciones de salud y discapacidad
+    posee_discapacidad VARCHAR(25),
+    descripcion_discapacidad VARCHAR(110),
+    
+    -- Factores sociales y de identidad
+    es_jefe_hogar VARCHAR(25),
+    identidad_lgtbi VARCHAR(110),
+    antecedente_migratorio VARCHAR(25),
+    
+    -- Contexto cultural y educativo
+    nombre_etnia VARCHAR(160),
+    grado_instruccion VARCHAR(160),
+    tipo_ocupacion VARCHAR(160),
+    
+    -- Datos de localización
+    nombre_barrio_vereda VARCHAR(160),
+    sector_comuna_correg VARCHAR(160),
+    tipo_zona VARCHAR(60)
 );
